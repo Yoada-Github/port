@@ -624,6 +624,12 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+.about{
+  background-image: url("assets/img/walleper.jpg");
+  background-size: cover;
+  margin: 20px;
+  padding: 0;
+}
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;

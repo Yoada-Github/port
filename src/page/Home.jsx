@@ -45,14 +45,14 @@ function Home() {
 
           {/* Social Media Icons */}
           <div className="mt-4 social-links">
-            <Link to="https://github.com" className="text-white mx-2 fs-3">
-              <i className=" bi bi-github text-white"></i>
+            <Link to="https://github.com/Yoada-Github" className="mx-2 fs-3">
+              <i className=" bi bi-github" style={{color:"rgb(3, 3, 4)"}}></i>
             </Link>
-            <Link to="https://linkedin.com" className="text-white mx-2 fs-3">
+            <Link to="https://www.linkedin.com/in/yoseph-adane-514296260/" className="text-white mx-2 fs-3">
               <i className="bi bi-linkedin" style={{color:"rgb(0, 119, 181)"}}></i>
             </Link>
             <Link to="https://twitter.com" className="text-white mx-2 fs-3">
-              <i className="bi bi-twitter" style={{color:"rgb(0, 0, 0)"}}></i>
+              <i className="bi bi-facebook" style={{color:"rgb(9, 13, 222)"}}></i>
             </Link>
             <Link to="https://twitter.com" className="text-white mx-2 fs-3">
               <i className="bi bi-instagram" style={{color:"rgb(228, 64, 95)"}}></i>
