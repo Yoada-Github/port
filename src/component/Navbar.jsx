@@ -16,7 +16,7 @@ function Navlink() {
   return (
     <>
       {/* Toggle Button */}
-      <Button className="position-fixed top-0 start-0 my-3 mx-3 bg-primary rounded-circle border-0 shadow-lg"
+      <Button className="position-fixed top-0 start-0 my-3 mx-3 bg-dark rounded-circle border-0 shadow-lg"
         onClick={toggleNavbar} style={{ zIndex: "1050", width: "45px", height: "45px" }}>
         {isOpen ? <FaTimes className="text-white fs-5" /> : <FaBars className="text-white fs-5" />}
       </Button>
@@ -27,33 +27,33 @@ function Navlink() {
         </div>
         <nav>
           <ul className="nav flex-column">
-            <li className="nav-item">
-              <Link to="/" className="nav-link text-white">
+            <li className="nav-item ">
+              <Link to="/" className="nav-link active">
                 <i className="bi bi-house"></i> Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/about" className="nav-link text-white">
+              <Link to="/about" className="nav-link ">
                 <i className="bi bi-person"></i> About
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/skill" className="nav-link text-white">
+              <Link to="/skill" className="nav-link">
                 <i className="bi bi-bar-chart"></i> Skill
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/resume" className="nav-link text-white">
+              <Link to="/resume" className="nav-link">
                 <i className="bi bi-file-earmark-text"></i> Resume
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/project" className="nav-link text-white">
+              <Link to="/project" className="nav-link">
                 <i className="bi bi-images"></i> Projects
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/contact" className="nav-link text-white">
+              <Link to="/contact" className="nav-link">
                 <i className="bi bi-envelope"></i> Contact
               </Link>
             </li>
@@ -79,14 +79,18 @@ function Navlink() {
           .sidebar.open {
             left: 0;
           }
-
           .nav-link {
             padding: 10px;
+            color:white;
             transition: all 0.3s ease-in-out;
           }
 
           .nav-link:hover {
-            background-color:lightblue;
+            border-radius: 5px;
+            color:blue;
+          }
+          .nav-link:active {
+            color:blue:
             border-radius: 5px;
           }
 

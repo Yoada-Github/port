@@ -9,9 +9,9 @@ import img3 from "../assets/img/Screenshot (266).png"
 import img4 from "../assets/img/screenshot.png"
 import img5 from "../assets/Screenshot (838).png"
 import img6 from "../assets/Screenshot (840).png"
-
 function Project() {
   return (
+    <>
     <div>
       <Navbar/>  
       <section className="portfolio section light-background">
@@ -139,7 +139,7 @@ function Project() {
                   <div className="portfolio-info">
                     <h4>React API</h4>
                     <p>
-                    MERN-stack fitness platform enabling user registration, workout tracking, performance analytics, and gym management.
+                    MERN-stack API fetch weather app enabling user to get informmation about climatic condition of a specific location.
                     </p>
                     <Link href={img6} title="App 3" data-gallery="portfolio-gallery-app"
                       className="glightbox preview-link">
@@ -156,6 +156,7 @@ function Project() {
         </div>
       </section>
     </div>
+    </>
   );
 }
 
