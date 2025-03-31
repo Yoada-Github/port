@@ -1,9 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import Navbar from "../component/Navbar";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  // Handle form input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch("https://backendport-eeux.onrender.com/contact/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setSuccess("Your message has been sent. Thank you!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setError(data.error || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setError("Network error. Please check your connection.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <Navbar />
@@ -29,7 +73,6 @@ function Contact() {
                     <p>+251 955693305</p>
                   </div>
                 </div>
-
                 <div className="info-item d-flex p-2 m-3" data-aos="fade-up" data-aos-delay="400">
                   <i className="bi bi-envelope flex-shrink-0"></i>
                   <div>
@@ -44,40 +87,72 @@ function Contact() {
                   style={{ border: "0", width: "100%", height: "270px" }}
                   allowFullScreen
                   loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade">
-                </iframe>
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
 
             {/* Right Side - Contact Form */}
             <div className="col-lg-7">
-              <form className="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <form className="php-email-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="200">
                 <div className="row gy-4">
                   <div className="col-md-6">
                     <label htmlFor="name-field" className="pb-2">Your Name</label>
-                    <input type="text" name="name" id="name-field" className="form-control rounded" required />
+                    <input
+                      type="text"
+                      name="name"
+                      id="name-field"
+                      className="form-control rounded"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-md-6">
-                    <label htmlFor="email-field" className="pb-2">Your Email</label>
-                    <input type="email" className="form-control rounded" name="email" id="email-field" required />
+                    <label htmlFor="email-field" className="pb-2">Email</label>
+                    <input
+                      type="email"
+                      className="form-control rounded"
+                      name="email"
+                      id="email-field"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-md-12">
                     <label htmlFor="subject-field" className="pb-2">Subject</label>
-                    <input type="text" className="form-control rounded" name="subject" id="subject-field" required />
+                    <input
+                      type="text"
+                      className="form-control rounded"
+                      name="subject"
+                      id="subject-field"
+                      required
+                      value={formData.subject}
+                      onChange={handleChange}
+                    />
                   </div>
 
                   <div className="col-md-12">
                     <label htmlFor="message-field" className="pb-2">Message</label>
-                    <textarea className="form-control" name="message" rows="10" id="message-field" required></textarea>
+                    <textarea
+                      className="form-control"
+                      name="message"
+                      rows="10"
+                      id="message-field"
+                      required
+                      value={formData.message}
+                      onChange={handleChange}
+                    ></textarea>
                   </div>
 
                   <div className="col-md-12 text-center">
-                    <div className="loading">Loading</div>
-                    <div className="error-message"></div>
-                    <div className="sent-message">Your message has been sent. Thank you!</div>
-                    <button type="submit">Send Message</button>
+                    {loading && <div className="loading">Sending...</div>}
+                    {error && <div className="error-message text-danger">{error}</div>}
+                    {success && <div className="sent-message text-success">{success}</div>}
+                    <button type="submit" className="btn btn-primary">Send Message</button>
                   </div>
                 </div>
               </form>
