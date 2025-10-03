@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import img from "../assets/img/photo_2024-11-22_15-53-21.jpg";
+import img from "../assets/img/UIUX.png";
 import imgs from "../assets/img/walleper.jpg";
 import Navbar from "../component/Navbar"; 
 
@@ -14,7 +14,7 @@ function About() {
           <div className="container" data-aos="fade-up" data-aos-delay="100">
             <div className="row gy-4 justify-content-center">
               <div className="col-lg-4">
-                <img src={img} className="img-fluid py-4 mt-5" alt="img" style={{width:"800px", height:"530px"}}/>
+                <img src={img} className="img-fluid py-4 mt-4" alt="img" style={{width:"800px", height:"630px"}}/>
               </div>
 
               <div className="col-lg-8 content">
